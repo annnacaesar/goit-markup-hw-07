@@ -838,13 +838,13 @@ img {
 		visibility var(--transition-duration) var(--timing-function);
 }
 
-.backdrop.is-hidden {
+.backdrop--is-hidden {
 	visibility: hidden;
 	opacity: 0;
 	pointer-events: none;
 }
 
-.backdrop.is-hidden .modal {
+.backdrop--is-hidden .modal {
 	transform: translate(-50%, -50%) scale(0.5) translateY(-700px);
 	opacity: 0;
 }
@@ -865,38 +865,7 @@ img {
 	transition: transform 500ms cubic-bezier(0.17, 0.67, 0.83, 0.67), opacity 500ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }
 
-.modal-btn-close {
-	position: absolute;
-	top: 8px;
-	right: 8px;
-	width: 30px;
-	height: 30px;
-	background-color: transparent;
-	border: 1px solid rgba(0, 0, 0, 0.1);
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	transition: border-color var(--transition-duration) var(--timing-function),
-		outline var(--transition-duration) var(--timing-function);
-}
-
-.modal-icon-close {
-	width: 18px;
-	height: 18px;
-
-	transition: fill var(--transition-duration) var(--timing-function);
-}
-
-.modal-btn-close:hover,
-.modal-btn-close:focus {
-	border-color: var(--accent-color);
-	fill: var(--accent-color);
-	outline: var(--accent-color);
-}
-
-.form {
+.modal__form {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -907,7 +876,7 @@ img {
 	padding: 40px;
 }
 
-.form .modal-title {
+.modal__title {
 	margin-bottom: 12px;
 	font-weight: bold;
 	font-size: 20px;
@@ -917,8 +886,8 @@ img {
 	color: #212121;
 }
 
-.form-field,
-.form-feedback {
+.modal__field,
+.modal__feedback {
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -930,16 +899,16 @@ img {
 	color: #757575;
 }
 
-.form-feedback {
+.modal__feedback {
 	margin-bottom: 20px;
 }
 
-.modal-form-input {
+.modal__input {
 	margin-top: 4px;
 	padding: 11px 42px;
 }
 
-.form-field svg {
+.modal__icon {
 	position: absolute;
 	bottom: 11px;
 	left: 12px;
@@ -947,7 +916,7 @@ img {
 	transition: fill var(--transition-duration) var(--timing-function);
 }
 
-.modal-form-input {
+.modal__input {
 	border: 1px solid rgba(33, 33, 33, 0.2);
 	box-sizing: border-box;
 	border-radius: 4px;
@@ -956,13 +925,13 @@ img {
 		outline var(--transition-duration) var(--timing-function), fill var(--transition-duration) var(--timing-function);
 }
 
-.modal-form-input:focus,
-.form-feedback textarea:focus {
+.modal__input:focus,
+.modal__textarea:focus {
 	border-color: var(--accent-color);
 	outline: var(--accent-color);
 }
 
-.modal-form-input:focus + svg {
+.modal__input:focus + .modal__icon {
 	fill: var(--accent-color);
 }
 
@@ -970,7 +939,7 @@ img {
 	border-radius: var(--accent-color);
 } */
 
-.form-feedback textarea {
+.modal__textarea {
 	resize: none;
 	margin-top: 4px;
 	padding: 12px 16px;
@@ -981,7 +950,7 @@ img {
 	border-radius: 4px;
 }
 
-.form-feedback textarea::placeholder {
+.modal__textarea::placeholder {
 	font-size: 14px;
 	line-height: 1.14;
 	letter-spacing: 0.01em;
@@ -989,7 +958,9 @@ img {
 	color: rgba(117, 117, 117, 0.5);
 }
 
-.form-agree {
+/* ====================КАСТОМНИЙ ЧЕКБОКС==================== */
+
+.checkbox {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1000,9 +971,7 @@ img {
 	color: #757575;
 }
 
-/* ====================КАСТОМНИЙ ЧЕКБОКС==================== */
-
-.check-input {
+.checkbox__input {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -1010,15 +979,15 @@ img {
 	margin-right: 7px;
 }
 
-.check-label {
+.checkbox__label {
 	cursor: pointer;
 }
 
-.check-label span {
+.checkbox__label span {
 	position: relative;
 }
 
-.check-icon-vector {
+.checkbox__icon-vector {
 	position: absolute;
 	top: 50%;
 	left: -12px;
@@ -1032,13 +1001,13 @@ img {
 		border-radius var(--transition-duration) var(--timing-function);
 }
 
-.check-input:checked + .check-icon-vector {
+.checkbox__input:checked + .checkbox__icon-vector {
 	fill: var(--accent-color);
 	background-color: var(--accent-color);
 	border-radius: 2px;
 }
 
-.check-icon {
+.checkbox__icon {
 	position: absolute;
 	/* border: 1px solid tomato; */
 	top: 2px;
@@ -1052,17 +1021,17 @@ img {
 	transition: opacity var(--transition-duration) var(--timing-function);
 }
 
-.check-input:focus + .check-icon-vector {
+.checkbox__input:focus + .checkbox__icon-vector {
 	fill: var(--accent-color);
 }
 
-.check-input:checked ~ .check-icon {
+.checkbox__input:checked ~ .checkbox__icon {
 	opacity: 1;
 }
 
 /* -----------------------кінець кастомного чекбоксу--------------- */
 
-.form-agree .policy {
+.checkbox__policy {
 	text-decoration: underline;
 
 	font-size: 14px;
@@ -1071,7 +1040,7 @@ img {
 	color: var(--accent-color);
 }
 
-.form button[type="submit"] {
+.modal__button {
 	display: flex;
 	margin-top: 30px;
 	margin-right: auto;
@@ -1093,9 +1062,40 @@ img {
 	transition: background-color var(--transition-duration) var(--timing-function);
 }
 
-.form button:hover,
-.form button:focus {
+.modal__button:hover,
+.modal__button:focus {
 	background-color: #188ce8;
+}
+
+.button-close {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 30px;
+	height: 30px;
+	background-color: transparent;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	transition: border-color var(--transition-duration) var(--timing-function),
+		outline var(--transition-duration) var(--timing-function);
+}
+
+.button-close__icon {
+	width: 18px;
+	height: 18px;
+
+	transition: fill var(--transition-duration) var(--timing-function);
+}
+
+.button-close:hover,
+.button-close:focus {
+	border-color: var(--accent-color);
+	fill: var(--accent-color);
+	outline: var(--accent-color);
 }
 
 /* #endregion */ ;
