@@ -115,8 +115,7 @@ body {
   transition: background-color var(--transition-duration) var(--timing-function);
 }
 
-.button:hover,
-.button:focus {
+.button:hover, .button:focus {
   background-color: #188ce8;
 }
 
@@ -511,16 +510,15 @@ body {
   transition: color var(--transition-duration) var(--timing-function), border-color var(--transition-duration) var(--timing-function);
 }
 
+.clients__link:hover, .clients__link:focus {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
 .clients__icon {
   width: 106px;
   height: 60px;
   fill: currentColor;
-}
-
-.clients__link:hover,
-.clients__link:focus {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
 }
 
 .filter {
@@ -680,6 +678,7 @@ body {
 .page-footer {
   padding: 60px 15px;
   background-color: var(--footer-background-color);
+  /* -----LOGO----- */
 }
 
 .page-footer__container {
@@ -691,7 +690,6 @@ body {
           align-items: baseline;
 }
 
-/* -----LOGO----- */
 .page-footer__logo {
   padding: 0;
   margin-right: 0;
@@ -709,12 +707,23 @@ body {
   transition: color var(--transition-duration) var(--timing-function);
 }
 
-.address__link:focus,
-.address__link:hover {
+.address__link:focus, .address__link:hover {
   color: var(--accent-color);
 }
 
 /* -----CONTACTS----- */
+.footer-contacts {
+  margin-top: 9px;
+}
+
+.footer-contacts__item {
+  margin-bottom: 9px;
+}
+
+.footer-contacts__item--margin {
+  margin-bottom: 0;
+}
+
 .footer-contacts__link {
   color: rgba(255, 255, 255, 0.6);
   font-size: 14px;
@@ -723,17 +732,8 @@ body {
   transition: color var(--transition-duration) var(--timing-function);
 }
 
-.footer-contacts__link:hover,
-.footer-contacts__link:focus {
+.footer-contacts__link:hover, .footer-contacts__link:focus {
   color: var(--accent-color);
-}
-
-.footer-contacts {
-  margin-top: 9px;
-}
-
-.footer-contacts__item:not(:last-child) {
-  margin-bottom: 9px;
 }
 
 /* -----NETWORK----- */
@@ -741,8 +741,7 @@ body {
   margin-left: 70px;
 }
 
-.network__title,
-.follow__title {
+.network__title, .follow__title {
   color: var(--third-text-color);
   font-weight: bold;
   font-size: 14px;
@@ -769,6 +768,12 @@ body {
   margin-left: 0px;
 }
 
+.network__icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
 .network__link {
   width: 100%;
   height: 100%;
@@ -787,14 +792,7 @@ body {
   transition: color var(--transition-duration) var(--timing-function), background-color var(--transition-duration) var(--timing-function);
 }
 
-.network__icon {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
-.network__link:hover,
-.network__link:focus {
+.network__link:hover, .network__link:focus {
   background-color: var(--accent-color);
   color: var(--third-text-color);
 }
@@ -809,6 +807,13 @@ body {
   display: -ms-flexbox;
   display: flex;
   margin-top: 20px;
+}
+
+.follow__icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  fill: #ffffff;
 }
 
 .follow__input {
@@ -843,13 +848,6 @@ body {
 .follow__input::placeholder {
   line-height: 1.25;
   color: rgba(255, 255, 255, 0.6);
-}
-
-.follow__icon {
-  width: 24px;
-  height: 24px;
-  margin-left: 10px;
-  fill: #ffffff;
 }
 
 .backdrop {

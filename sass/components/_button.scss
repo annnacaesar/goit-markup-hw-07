@@ -20,8 +20,9 @@
 	letter-spacing: 0.06em;
 
 	transition: background-color var(--transition-duration) var(--timing-function);
-}
-.button:hover,
-.button:focus {
-	background-color: #188ce8;
+
+	&:hover,
+	&:focus {
+		background-color: #188ce8;
+	}
 }

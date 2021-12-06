@@ -8,17 +8,12 @@
 
 	transition: opacity var(--transition-duration) var(--timing-function),
 		visibility var(--transition-duration) var(--timing-function);
-}
 
-.backdrop--is-hidden {
-	visibility: hidden;
-	opacity: 0;
-	pointer-events: none;
-}
-
-.backdrop--is-hidden .modal {
-	transform: translate(-50%, -50%) scale(0.5) translateY(-700px);
-	opacity: 0;
+	&--is-hidden {
+		visibility: hidden;
+		opacity: 0;
+		pointer-events: none;
+	}
 }
 
 .modal {
@@ -35,49 +30,49 @@
 	background-color: #fff;
 
 	transition: transform 500ms cubic-bezier(0.17, 0.67, 0.83, 0.67), opacity 500ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
-}
 
-.modal__form {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 528px;
-	/* height: 581px; */
-	margin-left: auto;
-	margin-right: auto;
-	padding: 40px;
-}
+	.backdrop--is-hidden & {
+		transform: translate(-50%, -50%) scale(0.5) translateY(-700px);
+		opacity: 0;
+	}
 
-.modal__title {
-	margin-bottom: 12px;
-	font-weight: bold;
-	font-size: 20px;
-	line-height: 23px;
-	text-align: center;
+	&__form {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 528px;
+		/* height: 581px; */
+		margin-left: auto;
+		margin-right: auto;
+		padding: 40px;
+	}
 
-	color: #212121;
-}
+	&__title {
+		margin-bottom: 12px;
+		font-weight: bold;
+		font-size: 20px;
+		line-height: 23px;
+		text-align: center;
 
-.modal__field,
-.modal__feedback {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 10px;
+		color: #212121;
+	}
 
-	font-size: 12px;
-	line-height: 1.16;
-	letter-spacing: 0.01em;
-	color: #757575;
-}
+	&__field {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 10px;
 
-.modal__feedback {
-	margin-bottom: 20px;
-}
+		font-size: 12px;
+		line-height: 1.16;
+		letter-spacing: 0.01em;
+		color: #757575;
+	}
 
-.modal__input {
-	margin-top: 4px;
-	padding: 11px 42px;
+	&__feedback {
+		@extend &__field;
+		margin-bottom: 20px;
+	}
 }
 
 .modal__icon {
@@ -86,25 +81,27 @@
 	left: 12px;
 
 	transition: fill var(--transition-duration) var(--timing-function);
+
+	.modal__input:focus + & {
+		fill: var(--accent-color);
+	}
 }
 
 .modal__input {
+	margin-top: 4px;
+	padding: 11px 42px;
+
 	border: 1px solid rgba(33, 33, 33, 0.2);
 	box-sizing: border-box;
 	border-radius: 4px;
 
 	transition: border-color var(--transition-duration) var(--timing-function),
 		outline var(--transition-duration) var(--timing-function), fill var(--transition-duration) var(--timing-function);
-}
 
-.modal__input:focus,
-.modal__textarea:focus {
-	border-color: var(--accent-color);
-	outline: var(--accent-color);
-}
-
-.modal__input:focus + .modal__icon {
-	fill: var(--accent-color);
+	&:focus {
+		border-color: var(--accent-color);
+		outline: var(--accent-color);
+	}
 }
 
 .modal__textarea {
@@ -116,14 +113,19 @@
 	border: 1px solid rgba(33, 33, 33, 0.2);
 	box-sizing: border-box;
 	border-radius: 4px;
-}
 
-.modal__textarea::placeholder {
-	font-size: 14px;
-	line-height: 1.14;
-	letter-spacing: 0.01em;
+	&:focus {
+		border-color: var(--accent-color);
+		outline: var(--accent-color);
+	}
 
-	color: rgba(117, 117, 117, 0.5);
+	&::placeholder {
+		font-size: 14px;
+		line-height: 1.14;
+		letter-spacing: 0.01em;
+
+		color: rgba(117, 117, 117, 0.5);
+	}
 }
 
 /* ====================КАСТОМНИЙ ЧЕКБОКС==================== */
@@ -138,22 +140,31 @@
 	line-height: 1.16;
 
 	color: #757575;
-}
 
-.checkbox__input {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
+	&__input {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
 
-	margin-right: 7px;
-}
+		margin-right: 7px;
+	}
 
-.checkbox__label {
-	cursor: pointer;
-}
+	&__label {
+		cursor: pointer;
+	}
 
-.checkbox__label span {
-	position: relative;
+	&__thumb {
+		position: relative;
+	}
+
+	&__policy {
+		text-decoration: underline;
+
+		font-size: 14px;
+		line-height: 1.7;
+
+		color: var(--accent-color);
+	}
 }
 
 .checkbox__icon-vector {
@@ -168,17 +179,20 @@
 	transition: fill var(--transition-duration) var(--timing-function),
 		background-color var(--transition-duration) var(--timing-function),
 		border-radius var(--transition-duration) var(--timing-function);
-}
 
-.checkbox__input:checked + .checkbox__icon-vector {
-	fill: var(--accent-color);
-	background-color: var(--accent-color);
-	border-radius: 2px;
+	.checkbox__input:checked + & {
+		fill: var(--accent-color);
+		background-color: var(--accent-color);
+		border-radius: 2px;
+	}
+
+	.checkbox__input:focus + & {
+		fill: var(--accent-color);
+	}
 }
 
 .checkbox__icon {
 	position: absolute;
-	/* border: 1px solid tomato; */
 	top: 2px;
 	right: 8px;
 
@@ -188,27 +202,13 @@
 	opacity: 0;
 
 	transition: opacity var(--transition-duration) var(--timing-function);
-}
 
-.checkbox__input:focus + .checkbox__icon-vector {
-	fill: var(--accent-color);
-}
-
-.checkbox__input:checked ~ .checkbox__icon {
-	opacity: 1;
+	.checkbox__input:checked ~ & {
+		opacity: 1;
+	}
 }
 
 /* -----------------------кінець кастомного чекбоксу--------------- */
-
-.checkbox__policy {
-	text-decoration: underline;
-
-	font-size: 14px;
-	line-height: 1.7;
-
-	color: var(--accent-color);
-}
-
 .button-close {
 	position: absolute;
 	top: 8px;
@@ -224,18 +224,18 @@
 
 	transition: border-color var(--transition-duration) var(--timing-function),
 		outline var(--transition-duration) var(--timing-function);
-}
 
-.button-close__icon {
-	width: 18px;
-	height: 18px;
+	&__icon {
+		width: 18px;
+		height: 18px;
 
-	transition: fill var(--transition-duration) var(--timing-function);
-}
+		transition: fill var(--transition-duration) var(--timing-function);
+	}
 
-.button-close:hover,
-.button-close:focus {
-	border-color: var(--accent-color);
-	fill: var(--accent-color);
-	outline: var(--accent-color);
+	&:hover,
+	&:focus {
+		border-color: var(--accent-color);
+		fill: var(--accent-color);
+		outline: var(--accent-color);
+	}
 }

@@ -8,11 +8,11 @@
 	font-weight: 700;
 	font-size: 26px;
 	line-height: 1.19;
-}
 
-.logo__first-part {
-	color: var(--accent-color);
-}
-.logo__second-part {
-	margin-left: -3px;
+	&__first-part {
+		color: var(--accent-color);
+	}
+	&__second-part {
+		margin-left: -3px;
+	}
 }
